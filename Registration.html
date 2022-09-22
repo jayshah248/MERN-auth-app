@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Registration Page</title>
+<style type="text/css">
+	body, html {
+		height: 100%;
+		 margin: 0;
+	}
+	* {
+		  box-sizing: border-box;
+		}
+
+	.container{
+	  position: absolute;
+	  right: 40%;
+      top: 30%;
+	  margin: 20px;
+	  max-width: 300px;
+	  padding: 16px;
+	  background-color: white;
+	}
+		input[type=text], input[type=password],input[type=email], select[name=languages] {
+			  width: 100%;
+			  padding: 2px;
+			  margin: 3px 0 3px 0;
+			  border: none;
+			  background: #f1f1f1;
+			}
+
+		input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, select[name=languages]:focus, select[name=Destination]:focus{
+			  background-color: #ddd;
+			  outline: none;
+			}
+	.b{
+			 background-image: url("image1.jpg");
+		  height: 100%;
+		  background-position: center;
+		  background-repeat: no-repeat ;
+		  background-size: cover;
+		  position: relative;
+	}
+			.btn {
+				  background-color: orange;
+				  color: white;
+				  padding: 5px 5px;
+				  border: none;
+				  cursor: pointer;
+				  width: 100%;
+				  opacity: 0.9;
+					}
+</style>
+</head>
+<body onload="document.container.focus()">
+	
+	<div class="b">
+	
+	<form class="container">
+	
+		Email Id:<input type="email" name="mail" class="email" placeholder="Enter Email" required><br>
+		First Name:<input type="text" name="name" placeholder="Hannah" required><br>
+		<!-- Middle Name:<input type="text" name="mname" placeholder="Andrew" required><br> -->
+		Last Name:<input type="text" name="sname" placeholder="Baker" required><br>
+		Mobile Number:<input type="text" name="number" placeholder="98787777777"><br>
+		Password: <input type="password" name="pass" placeholder="Enter password" id="pass"><br>
+        Confirm Password: <input type="password" name="cpass" placeholder="Enter password again" id="cpass"><br>
+		<button type="button" class="btn" >Submit</button>
+	</form>
+	</div>
+	
+	
+</body>
+<script src="validate.js"></script>
+</html>
