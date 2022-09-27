@@ -10,7 +10,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken') 
 
 const JWT_SECRET = ';oidhjf;lkdahjsj li;furqw[oitvufenoioungfoisaud[oifusao;+'
-
+var authed = false
 
 //multer file storage and stuff
 var Storage = multer.diskStorage({
@@ -43,11 +43,15 @@ mongoose.connect('mongodb://localhost:27017/AuthAppDB',{
 
 app.set("view engine", "ejs")
 app.get('/', async (req,res) => {
-
-    res.render("login")
+  if(!authed)
+    {res.render("login")}
+  else
+  {
+    res.render("Dashboard", {Information:UserInfo})
+  }
 })
 
-
+var UserInfo = new Object();
 
 app.post("/signin", async (req,res) => {
 
@@ -62,7 +66,7 @@ app.post("/signin", async (req,res) => {
       id: user._id,
       username: user.username
     }, JWT_SECRET)
-    normAuth = true;
+    authed = true;
     UserInfo.name = user.username;
     UserInfo.id = user._id;
     return res.json({status:'ok', data: token})
@@ -127,6 +131,11 @@ app.post("/signup",async (req,res)=>{
 
   res.json({ status: 'ok' })
 
+})
+
+app.get('/logout', (req,res) => {
+  authed = false;
+  res.redirect('/');
 })
 
 app.listen(3000, () => {
